@@ -25,7 +25,7 @@ public class Fabrica {
     public int gananciaEsperada() {
         int ganancia = 0;
         for(Pedido pedido : pedidos) {
-            ganancia += pedido.getPrecioVenta();
+            ganancia += pedido.getPrecioVenta() - pedido.getCostoFabricacion();
         }
         return ganancia;
     }

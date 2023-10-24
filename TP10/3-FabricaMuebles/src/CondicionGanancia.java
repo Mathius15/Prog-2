@@ -9,7 +9,7 @@ public class CondicionGanancia extends Condicion {
 
     @Override
     public boolean cumple(Pedido p) {
-        return p.getPrecioVenta() > this.ganancia;
+        return (p.getPrecioVenta() - p.getCostoFabricacion()) > this.ganancia;
     }
     
 }

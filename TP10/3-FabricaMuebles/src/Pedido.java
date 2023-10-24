@@ -1,17 +1,19 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Pedido {
-    private String material, caracteristicas;
+    private String material;
+    private ArrayList<String> caracteristicas;
     private int costoFabricacion, precioVenta;
     private LocalDate fechaMaxima;
     
-    public Pedido(String material, String caracteristicas, int costoFabricacion, int precioVenta,
+    public Pedido(String material,  int costoFabricacion, int precioVenta,
             LocalDate fechaMaxima) {
         this.material = material;
-        this.caracteristicas = caracteristicas;
         this.costoFabricacion = costoFabricacion;
         this.precioVenta = precioVenta;
         this.fechaMaxima = fechaMaxima;
+        caracteristicas = new ArrayList<>();
     }
 
     public String getMaterial() {
@@ -22,12 +24,12 @@ public class Pedido {
         this.material = material;
     }
 
-    public String getCaracteristicas() {
-        return caracteristicas;
+    public ArrayList<String> getCaracteristicas() {
+        return new ArrayList<String>(caracteristicas);
     }
 
-    public void setCaracteristicas(String caracteristicas) {
-        this.caracteristicas = caracteristicas;
+    public void addCaracteristicas(String caracteristica) {
+        caracteristicas.add(caracteristica);
     }
 
     public int getCostoFabricacion() {
