@@ -19,6 +19,15 @@ public class Noticia extends Contenido{
         palabrasClaves = new ArrayList<>();
     }
 
+    
+    @Override
+    public ArrayList<Noticia> noticiasQueCumplen(Condicion c) {
+        ArrayList<Noticia> aux = new ArrayList<>();
+        if(c.cumple(this)){
+            aux.add(this);
+        }
+        return aux;
+    }
 
     @Override
     public void mostrar() {
@@ -84,6 +93,7 @@ public class Noticia extends Contenido{
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
 
     
 }

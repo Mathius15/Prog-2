@@ -15,7 +15,15 @@ public class Categoria extends Contenido{
             c.setPadre(this);
         }
         contenidos.add(c);
+    }
 
+    @Override
+    public ArrayList<Noticia> noticiasQueCumplen(Condicion c) {
+        ArrayList<Noticia> aux = new ArrayList<>();
+        for(Contenido contenido : contenidos) {
+            aux.addAll(contenido.noticiasQueCumplen(c));
+        }
+        return aux;
     }
 
     public String getDescripcion() {

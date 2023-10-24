@@ -1,22 +1,31 @@
 import java.util.ArrayList;
 
 public class Empresa {
-    private ArrayList<Alquilable> alquilables;
+    private ArrayList<Elemento> elementos;
+    private ArrayList<Combo> combos;
 
-    public void addAlquilable(Alquilable a) {
-        alquilables.add(a);
+    public void addElemento(Elemento e) {
+        elementos.add(e);
     }
 
-    public ArrayList<Elemento> buscar(Condicion c) {
-        ArrayList<Elemento> elementos = new ArrayList<>();
-        for(int i = 0; i < alquilables.size(); i++) {
-            Alquilable a = alquilables.get(i);
-            if(c.cumple(a) && a instanceof Elemento) {
-                elementos.add((Elemento)a);
-            } else {
-                elementos.addAll(((Combo)a).getElementos());
+    public void addCombo(Combo c) {
+        combos.add(c);
+    }
+
+    public ArrayList<Elemento> buscarElementos(Condicion c) {
+        ArrayList<Elemento> rta = new ArrayList<>();
+        for(Elemento elemento : elementos) {
+            if(c.cumple(elemento)) {
+                rta.add(elemento);
             }
         }
-        return elementos;
+        for(Combo combo : combos) {
+            for(int i = 0; i < combo.getElementos().size();i++) {
+                if(c.cumple(combo.getElementos().get(i))) {
+                    rta.add(combo.getElementos().get(i));
+                }
+            }
+        }
+        return rta;
     }
 }

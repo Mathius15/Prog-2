@@ -1,19 +1,18 @@
 import java.util.ArrayList;
 
 public class Administrador {
-    private ArrayList<Noticia> noticias;
+    private ArrayList<Contenido> contenidos;
 
     public Administrador() {
-        noticias = new ArrayList<>();
+        contenidos = new ArrayList<>();
     }
 
     public ArrayList<Noticia> buscarNoticia(Condicion c) {
-        ArrayList<Noticia> resultado = new ArrayList<>();
-        for(int i = 0; i < noticias.size(); i++) {
-            if(c.cumple(noticias.get(i))){
-                resultado.add(noticias.get(i));
-            }
+        ArrayList<Noticia> aux = new ArrayList<>();
+        for(Contenido contenido : contenidos) {
+            aux.addAll(contenido.noticiasQueCumplen(c));
         }
-        return resultado;
+        return aux;
+
     }
 }

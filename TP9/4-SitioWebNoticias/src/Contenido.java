@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Contenido {
     private Contenido padre;
 
@@ -11,5 +13,5 @@ public abstract class Contenido {
         this.padre = padre;
     }
 
-    
+    public abstract ArrayList<Noticia> noticiasQueCumplen(Condicion c);
 }
